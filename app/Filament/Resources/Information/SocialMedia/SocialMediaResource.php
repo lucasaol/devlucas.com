@@ -1,25 +1,23 @@
 <?php
 
-namespace App\Filament\Resources\SocialMedia;
+namespace App\Filament\Resources\Information\SocialMedia;
 
-use App\Filament\Resources\SocialMedia\Pages\ManageSocialMedia;
+use App\Filament\Resources\Information\SocialMedia\Pages\ManageSocialMedia;
 use App\Models\SocialMedia;
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Actions\ViewAction;
 use Filament\Forms\Components\TextInput;
-use Filament\Infolists\Components\IconEntry;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-use Guava\IconPicker\Forms\Components\IconPicker;
-use Guava\IconPicker\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Guava\IconPicker\Forms\Components\IconPicker;
+use Guava\IconPicker\Tables\Columns\IconColumn;
+use UnitEnum;
 
 class SocialMediaResource extends Resource
 {
@@ -28,6 +26,8 @@ class SocialMediaResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Link;
 
     protected static ?string $recordTitleAttribute = 'name';
+
+    protected static string | UnitEnum | null $navigationGroup = 'Info';
 
     public static function form(Schema $schema): Schema
     {

@@ -41,6 +41,10 @@ class DashboardPanelProvider extends PanelProvider
                 AccountWidget::class,
                 FilamentInfoWidget::class,
             ])
+            ->unsavedChangesAlerts()
+            ->navigationGroups([
+                'Information'
+            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

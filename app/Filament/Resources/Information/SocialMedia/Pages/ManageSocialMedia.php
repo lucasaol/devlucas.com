@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\SocialMedia\Pages;
+namespace App\Filament\Resources\Information\SocialMedia\Pages;
 
-use App\Filament\Resources\SocialMedia\SocialMediaResource;
+use App\Filament\Resources\Information\SocialMedia\SocialMediaResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ManageRecords;
 
