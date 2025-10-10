@@ -25,7 +25,7 @@ class SocialMediaResource extends Resource
 {
     protected static ?string $model = SocialMedia::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Link;
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -65,7 +65,9 @@ class SocialMediaResource extends Resource
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('order')
+            ->reorderable('order');
     }
 
     public static function getPages(): array

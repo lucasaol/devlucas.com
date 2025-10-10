@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class SocialMedia extends Model
 {
     protected $fillable = [
-      'name',
-      'icon',
-      'url'
+        'name',
+        'icon',
+        'url',
+        'order'
     ];
 }
