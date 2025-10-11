@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Filament\Tables\Columns\Layout\Stack;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Project extends Model
 {
@@ -16,4 +18,14 @@ class Project extends Model
         'content',
         'order'
     ];
+
+    public function stack(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Technology::class,
+            'project_stack',
+            'project_id',
+            'technology_id'
+        )->withTimestamps();
+    }
 }

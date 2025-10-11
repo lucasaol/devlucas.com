@@ -4,9 +4,13 @@ namespace App\Filament\Resources\Portfolio\Projects\Schemas;
 
 use App\Models\Blog\Post;
 use App\Models\Project;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
@@ -18,10 +22,10 @@ class ProjectForm
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->columns(['lg' => 3])
             ->components([
-                Section::make()
-                    ->columnSpanFull()
-                    ->schema([
+                Group::make()->columnSpan(['lg' => 2])->schema([
+                    Section::make()->columns(2)->schema([
                         TextInput::make('title')
                             ->required()
                             ->live(onBlur: true)
@@ -45,11 +49,24 @@ class ProjectForm
                             ->url()
                             ->maxLength(255)
                             ->prefixIcon('fab-github'),
+                    ]),
+                    Section::make('Content')->schema([
                         RichEditor::make('content')
                             ->required()
+                            ->hiddenLabel()
                             ->columnSpanFull()
                     ])
-                ->columns(2)
+                ]),
+                Group::make()->columnSpan(['lg' => 1])->schema([
+                    Section::make('Stack')->schema([
+                        Select::make('technologies')
+                            ->relationship('stack', 'name')
+                            ->multiple()
+                            ->required()
+                            ->preload()
+                            ->label('Technologies')
+                    ])
+                ])
             ]);
     }
 }
