@@ -39,8 +39,9 @@ class SocialMediaResource extends Resource
                 IconPicker::make('icon')
                     ->iconsSearchResults(),
                 TextInput::make('url')
-                    ->required()
-                    ->maxLength(255),
+                    ->url()
+                    ->maxLength(255)
+                    ->prefixIcon(Heroicon::GlobeAlt),
             ]);
     }
 
