@@ -15,6 +15,8 @@ class Project extends Model
         'introduction',
         'url',
         'github_url',
+        'is_published',
+        'published_at',
         'content',
         'order'
     ];

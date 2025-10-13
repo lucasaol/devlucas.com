@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Portfolio\Projects\Schemas;
 
-use App\Models\Blog\Post;
 use App\Models\Project;
-use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -58,6 +57,16 @@ class ProjectForm
                     ])
                 ]),
                 Group::make()->columnSpan(['lg' => 1])->schema([
+                    Section::make('Status')->schema([
+                        Toggle::make('is_published')
+                            ->label('Visible')
+                            ->default(true),
+                        DateTimePicker::make('published_at')
+                            ->label('Publishing date')
+                            ->default(now())
+                            ->required(),
+                    ]),
+
                     Section::make('Stack')->schema([
                         Select::make('technologies')
                             ->relationship('stack', 'name')
