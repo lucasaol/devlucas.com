@@ -5,6 +5,7 @@ namespace App\Models;
 use Filament\Tables\Columns\Layout\Stack;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Project extends Model
 {
@@ -29,5 +30,10 @@ class Project extends Model
             'project_id',
             'technology_id'
         )->withTimestamps();
+    }
+
+    public function gallery(): HasMany
+    {
+        return $this->hasMany(Image::class);
     }
 }

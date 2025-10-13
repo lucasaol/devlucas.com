@@ -9,6 +9,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Support\Enums\IconPosition;
 use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -24,6 +25,9 @@ class ProjectsTable
                     ->wrap(),
                 TextColumn::make('slug')
                     ->searchable(),
+                IconColumn::make('is_published')
+                    ->label('Published')
+                    ->boolean(),
                 TextColumn::make('url')
                     ->icon(Heroicon::GlobeAlt)
                     ->iconPosition(IconPosition::Before)

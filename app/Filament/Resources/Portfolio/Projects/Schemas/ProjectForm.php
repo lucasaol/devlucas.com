@@ -4,6 +4,8 @@ namespace App\Filament\Resources\Portfolio\Projects\Schemas;
 
 use App\Models\Project;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -54,7 +56,25 @@ class ProjectForm
                             ->required()
                             ->hiddenLabel()
                             ->columnSpanFull()
-                    ])
+                    ]),
+                    Section::make('Gallery')
+                        ->schema([
+                            Repeater::make('gallery')
+                                ->relationship('gallery')
+                                ->hiddenLabel()
+                                ->reorderable()
+                                ->orderColumn('order')
+                                ->schema([
+                                    FileUpload::make('image')
+                                        ->hiddenLabel()
+                                        ->image()
+                                        ->imageEditor()
+                                        ->required()
+                                        ->directory('project-gallery')
+                                ])
+                                ->grid(4)
+                        ])
+                        ->collapsible()
                 ]),
                 Group::make()->columnSpan(['lg' => 1])->schema([
                     Section::make('Status')->schema([
