@@ -42,6 +42,7 @@ class TechnologyResource extends Resource
                 FileUpload::make('image')
                     ->acceptedFileTypes(['image/svg+xml'])
                     ->imagePreviewHeight('80')
+                    ->directory('technologies')
                     ->required(),
                 TextInput::make('description')
                     ->required(),
