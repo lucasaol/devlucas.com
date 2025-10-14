@@ -44,7 +44,8 @@ class DashboardPanelProvider extends PanelProvider
             ->unsavedChangesAlerts()
             ->navigationGroups([
                 'Information',
-                'Portfolio'
+                'Portfolio',
+                'Resume'
             ])
             ->middleware([
                 EncryptCookies::class,
