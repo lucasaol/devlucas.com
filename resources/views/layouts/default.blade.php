@@ -10,7 +10,7 @@
 </head>
 <body class="flex min-h-screen">
     <livewire:layout.sidebar />
-    <div class="flex flex-col flex-1 min-h-screen">
+    <div class="flex flex-col flex-1 min-h-screen bg-light-500 dark:bg-dark-700 dark:text-light-700">
         <main class="flex-1 p-6 overflow-y-auto">
             {{ $slot }}
         </main>
