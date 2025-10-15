@@ -11,11 +11,12 @@
 
     --color-primary-500: oklch(0.5 0.13 296.83);
     --color-primary-700: oklch(0.32 0.08 296.73);
+    --color-primary-300: oklch(0.72 0.07 298.67);
 
     --color-dark-500: oklch(0.28 0.03 255.82);
     --color-dark-700: oklch(0.21 0.02 254.95);
 
     --color-light-500: oklch(1 0 0);
-    --color-ligth-700: oklch(0.99 0 0);
+    --color-light-700: oklch(0.99 0 0);
 
 }
