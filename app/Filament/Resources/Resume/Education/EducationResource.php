@@ -41,14 +41,14 @@ class EducationResource extends Resource
                     ->required()
                     ->maxLength(50),
                 DatePicker::make('started_at')
-                    ->suffixIcon(Heroicon::OutlinedCalendarDays)
+                    ->prefixIcon(Heroicon::OutlinedCalendarDays)
                     ->native(false)
                     ->reactive()
                     ->required()
                     ->closeOnDateSelection()
                     ->maxDate(fn (Get $get) => $get('finished_at') ? Carbon::parse($get('finished_at')) : now()),
                 DatePicker::make('finished_at')
-                    ->suffixIcon(Heroicon::OutlinedCalendarDays)
+                    ->prefixIcon(Heroicon::OutlinedCalendarDays)
                     ->native(false)
                     ->reactive()
                     ->closeOnDateSelection()

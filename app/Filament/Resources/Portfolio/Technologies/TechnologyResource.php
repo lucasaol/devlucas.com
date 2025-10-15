@@ -11,6 +11,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
@@ -44,8 +45,9 @@ class TechnologyResource extends Resource
                     ->imagePreviewHeight('80')
                     ->directory('technologies')
                     ->required(),
-                TextInput::make('description')
-                    ->required(),
+                Textarea::make('description')
+                    ->required()
+                    ->autosize(),
                 TextInput::make('order')
                     ->integer()
                     ->default(0)

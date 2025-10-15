@@ -79,7 +79,7 @@ class ProjectForm
                 Group::make()->columnSpan(['lg' => 1])->schema([
                     Section::make('Status')->schema([
                         Toggle::make('is_published')
-                            ->label('Visible')
+                            ->label('Published')
                             ->default(true),
                         DateTimePicker::make('published_at')
                             ->label('Publishing date')

@@ -69,6 +69,7 @@ class EditResumeHeader extends Page implements HasForms
                 Group::make()->columnSpan(['lg' => 1])->schema([
                     Section::make()->schema([
                         TextInput::make('phone')
+                            ->mask('+99 (99) 99999-9999')
                             ->maxLength(255)
                             ->prefixIcon(Heroicon::OutlinedPhone),
                         TextInput::make('email')

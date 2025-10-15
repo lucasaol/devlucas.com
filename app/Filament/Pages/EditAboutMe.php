@@ -5,6 +5,7 @@ namespace App\Filament\Pages;
 use App\Models\AboutMe;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -46,9 +47,10 @@ class EditAboutMe extends Page implements HasForms
                     ->maxLength(50),
                 TextInput::make('caption')
                 ->maxLength(50),
-                TextInput::make('introduction')
-                    ->columnSpan(2)
-                    ->maxLength(255),
+                Textarea::make('introduction')
+                    ->columnSpanFull()
+                    ->maxLength(255)
+                    ->autosize(),
                 FileUpload::make('avatar')
                     ->image()
                     ->avatar()
@@ -59,7 +61,7 @@ class EditAboutMe extends Page implements HasForms
                     ->directory('about-me'),
                 RichEditor::make('content')
                     ->required()
-                    ->columnSpan(2)
+                    ->columnSpanFull()
             ])
             ->statePath('data');
     }
