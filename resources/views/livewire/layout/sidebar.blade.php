@@ -1,8 +1,7 @@
 <aside class="
-bg-primary-500 dark:bg-dark-500 text-light-500
+bg-primary-500 dark:bg-dark-500 text-light-900
  h-screen p-4 transition-all w-64 overflow-auto
  ">
-
     <div class="flex flex-col items-center space-y-4">
         <div class="inline-flex items-center space-x-1">
             <a href="{{ route('index') }}">
@@ -10,6 +9,10 @@ bg-primary-500 dark:bg-dark-500 text-light-500
                 {{ config('app.name') }}
                 <span>/&gt;</span>
             </a>
+        </div>
+
+        <div class="p-4 flex flex-col items-center">
+            <livewire:layout.dark-mode-toggle />
         </div>
 
         <img src="{{ route('image', ['path' => $aboutMe->avatar]) }}"
@@ -62,8 +65,4 @@ bg-primary-500 dark:bg-dark-500 text-light-500
             </div>
         </a>
     </nav>
-
-    <div class="p-4 border-t border-t-gray-500 dark:border-t-gray-700 flex flex-col items-center">
-        <livewire:layout.dark-mode-toggle />
-    </div>
 </aside>

@@ -18,6 +18,7 @@
 
     --color-light-500: oklch(1 0 0);
     --color-light-700: oklch(0.99 0 0);
+    --color-light-900: oklch(1 0 0 / 0.8);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
