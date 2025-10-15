@@ -14,6 +14,7 @@ class Project extends Model
         'title',
         'slug',
         'introduction',
+        'short_description',
         'url',
         'github_url',
         'is_published',

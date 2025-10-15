@@ -52,9 +52,11 @@ class ProjectForm
                             ->prefixIcon('fab-github'),
                     ]),
                     Section::make('Content')->schema([
+                        Textarea::make('short_description')
+                            ->required()
+                            ->autosize(),
                         RichEditor::make('content')
                             ->required()
-                            ->hiddenLabel()
                             ->columnSpanFull()
                     ]),
                     Section::make('Gallery')
