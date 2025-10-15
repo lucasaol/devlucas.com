@@ -64,9 +64,6 @@ bg-primary-500 dark:bg-dark-500 text-light-500
     </nav>
 
     <div class="p-4 border-t border-t-gray-500 dark:border-t-gray-700 flex flex-col items-center">
-        <label class="inline-flex items-center cursor-pointer">
-            <input type="checkbox" value="" class="sr-only peer">
-            <div class="relative w-14 h-7 bg-primary-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-700 rounded-full peer dark:bg-primary-300 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-primary-700 dark:peer-checked:bg-primary-500"></div>
-        </label>
+        <livewire:layout.dark-mode-toggle />
     </div>
 </aside>
