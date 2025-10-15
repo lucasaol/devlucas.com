@@ -1,0 +1,106 @@
+<?php
+
+namespace App\Filament\Dashboard\Clusters\Resume\Pages;
+
+use App\Filament\Dashboard\Clusters\Resume\ResumeCluster;
+use App\Models\Resume;
+use BackedEnum;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Notifications\Notification;
+use Filament\Pages\Page;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+
+class EditResumeHeader extends Page implements HasForms
+{
+    use InteractsWithForms;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBookOpen;
+
+    protected string $view = 'filament.dashboard.pages.edit-resume';
+
+    protected static ?string $cluster = ResumeCluster::class;
+
+    public ?array $data = null;
+
+
+    public function mount(): void
+    {
+        $record = Resume::firstOrFail();
+        $this->data = $record->toArray();
+        $this->form->fill($this->data);
+    }
+
+    public function form(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                    Section::make()->columns(['lg' => 2])
+                    ->schema([
+                        Group::make()
+                            ->schema([
+                                TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(50),
+
+                                TextInput::make('position')
+                                    ->maxLength(50)
+                            ]),
+                        Group::make()
+                            ->schema([
+                                FileUpload::make('picture')
+                                    ->image()
+                                    ->avatar()
+                                    ->directory('resume')
+                            ]),
+                        TextArea::make('summary')
+                            ->columnSpanFull()
+                            ->autosize(),
+                    ]),
+                Group::make()->schema([
+                    Section::make()->columns(['lg' => 2])->schema([
+                        Group::make()->schema([
+                            TextInput::make('phone')
+                                ->mask('+99 (99) 99999-9999')
+                                ->maxLength(255)
+                                ->prefixIcon(Heroicon::OutlinedPhone),
+                            TextInput::make('email')
+                                ->email()
+                                ->maxLength(255)
+                                ->prefixIcon(Heroicon::OutlinedEnvelope)
+                        ]),
+                        Group::make()->schema([
+                            TextInput::make('website')
+                                ->url()
+                                ->maxLength(255)
+                                ->prefixIcon(Heroicon::GlobeAlt),
+                            TextInput::make('location')
+                                ->maxLength(255)
+                                ->prefixIcon(Heroicon::OutlinedMapPin)
+                        ]),
+                    ])
+                ])
+            ])
+            ->statePath('data');
+    }
+
+    public function submit(): void
+    {
+        $validated = $this->form->getState();
+
+        $record = Resume::firstOrFail();
+        $record->update($validated);
+
+        Notification::make()
+            ->title('Informações atualizadas com sucesso!')
+            ->success()
+            ->send();
+    }
+
+}

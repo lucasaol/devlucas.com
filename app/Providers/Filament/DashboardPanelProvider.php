@@ -33,34 +33,35 @@ class DashboardPanelProvider extends PanelProvider
             ])
             ->discoverResources(in: app_path('Filament/Dashboard/Resources'), for: 'App\Filament\Dashboard\Resources')
             ->discoverPages(in: app_path('Filament/Dashboard/Pages'), for: 'App\Filament\Dashboard\Pages')
+            ->discoverClusters(in: app_path('Filament/Dashboard/Clusters'), for: 'App\Filament\Dashboard\Clusters')
             ->pages([
-                Dashboard::class,
-            ])
-            ->discoverWidgets(in: app_path('Filament/Dashboard/Widgets'), for: 'App\Filament\Dashboard\Widgets')
-            ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
-            ])
-            ->unsavedChangesAlerts()
-            ->navigationGroups([
-                'Information',
-                'Portfolio',
-                'Resume'
-            ])
-            ->middleware([
-                EncryptCookies::class,
-                AddQueuedCookiesToResponse::class,
-                StartSession::class,
-                AuthenticateSession::class,
-                ShareErrorsFromSession::class,
-                VerifyCsrfToken::class,
-                SubstituteBindings::class,
-                DisableBladeIconComponents::class,
-                DispatchServingFilamentEvent::class,
-            ])
-            ->authMiddleware([
-                Authenticate::class,
-            ])
-            ->viteTheme('resources/css/filament/dashboard/theme.css');
+                    Dashboard::class,
+                ])
+                ->discoverWidgets(in: app_path('Filament/Dashboard/Widgets'), for: 'App\Filament\Dashboard\Widgets')
+                ->widgets([
+                    AccountWidget::class,
+                    FilamentInfoWidget::class,
+                ])
+                ->unsavedChangesAlerts()
+                ->navigationGroups([
+                    'Information',
+                    'Portfolio',
+                    'Resume'
+                ])
+                ->middleware([
+                    EncryptCookies::class,
+                    AddQueuedCookiesToResponse::class,
+                    StartSession::class,
+                    AuthenticateSession::class,
+                    ShareErrorsFromSession::class,
+                    VerifyCsrfToken::class,
+                    SubstituteBindings::class,
+                    DisableBladeIconComponents::class,
+                    DispatchServingFilamentEvent::class,
+                ])
+                ->authMiddleware([
+                    Authenticate::class,
+                ])
+                ->viteTheme('resources/css/filament/dashboard/theme.css');
     }
 }
