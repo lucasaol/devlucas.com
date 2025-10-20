@@ -20,4 +20,9 @@ class AboutMe extends Component
     {
         return view('livewire.components.about-me');
     }
+
+    public function placeholder(): View
+    {
+        return view('livewire.placeholder.skeleton.text-image');
+    }
 }
