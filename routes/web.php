@@ -1,10 +1,10 @@
 <?php
 
-use App\Livewire\Pages\AboutMePage;
+use App\Livewire\Pages\HomePage;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
-Route::get('/', AboutMePage::class)->name('index');
+Route::get('/', HomePage::class)->name('index');
 
 
 Route::get('image/{path}', function ($path) {
