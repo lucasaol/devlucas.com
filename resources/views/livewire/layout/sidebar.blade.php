@@ -53,7 +53,7 @@
         <nav class="
         border-t border-t-gray-500 dark:border-t-gray-700
         space-y-2 p-4
-        [&_a]:block [&_a]:p-2 [&_a]:hover:text-primary-700"
+        [&_a]:block [&_a]:p-2 [&_a]:hover:text-primary-700 [&_a]:dark:hover:text-primary-300"
         >
             <a href="{{ route('index') }}">
                 <div class="inline-flex items-center">
