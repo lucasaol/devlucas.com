@@ -1,9 +1,9 @@
-<div class="flex flex-col">
+<div class="flex flex-col container">
     <div>
         <h2 class="text-3xl mb-5 dark:text-light-500 border-l-5 border-l-primary-500 pl-3">Projetos</h2>
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-2 justify-between">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-between">
         @foreach($projects as $project)
             <a href="{{ route('index') }}" class="max-w-sm p-4 border border-gray-200 rounded-sm shadow-sm md:p-6 dark:border-gray-700">
                 <div

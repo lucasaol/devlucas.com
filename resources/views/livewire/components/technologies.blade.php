@@ -1,4 +1,4 @@
-<div class="flex flex-col">
+<div class="flex flex-col  container">
     <div>
         <h2 class="text-3xl mb-5 dark:text-light-500 border-l-5 border-l-primary-500 pl-3">Habilidades Técnicas</h2>
         <div class="section-intro mb-5 [&_a]:text-primary-500 [&_a]:hover:text-primary-300">

@@ -11,5 +11,9 @@
         <livewire:components.projects lazy :count="4"/>
     </section>
 
+    <section class="bg-gray-50 dark:bg-dark-700">
+        <livewire:components.cta-contact-me lazy />
+    </section>
+
 
 </div>
