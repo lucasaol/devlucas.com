@@ -21,7 +21,7 @@
                     font-medium rounded-lg text-xs px-5 py-2.5
                     inline-flex items-center text-center cursor-pointer
                     ">
-                    Ver mais
+                    {{__('Ver mais')}}
                     <x-heroicon-s-arrow-top-right-on-square class="h-3 w-3 ml-1" />
                 </button>
             </a>

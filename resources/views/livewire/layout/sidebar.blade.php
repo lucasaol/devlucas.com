@@ -57,22 +57,22 @@
         >
             <a href="{{ route('index') }}">
                 <div class="inline-flex items-center">
-                    <x-heroicon-s-user class="h-4 w-4 mr-2" /> {{__('About me')}}
+                    <x-heroicon-s-user class="h-4 w-4 mr-2" /> {{__('Sobre mim')}}
                 </div>
             </a>
             <a href="{{ route('index') }}">
                 <div class="inline-flex items-center space-x-1">
-                    <x-heroicon-s-computer-desktop class="h-4 w-4 mr-2" />  {{__('Portfolio')}}
+                    <x-heroicon-s-computer-desktop class="h-4 w-4 mr-2" />  {{__('Portfólio')}}
                 </div>
             </a>
             <a href="{{ route('index') }}">
                 <div class="inline-flex items-center space-x-1">
-                    <x-heroicon-s-document class="h-4 w-4 mr-2" />  {{__('Resume')}}
+                    <x-heroicon-s-document class="h-4 w-4 mr-2" />  {{__('Currículo')}}
                 </div>
             </a>
             <a href="{{ route('index') }}">
                 <div class="inline-flex items-center space-x-1">
-                    <x-heroicon-s-chat-bubble-left-right class="h-4 w-4 mr-2" />  {{__('Contact')}}
+                    <x-heroicon-s-chat-bubble-left-right class="h-4 w-4 mr-2" />  {{__('Contato')}}
                 </div>
             </a>
         </nav>

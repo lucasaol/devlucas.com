@@ -14,7 +14,7 @@
                text-center inline-flex items-center me-2"
             >
                 <x-heroicon-s-paper-airplane class="h-5 w-5 mr-1" />
-                Entre em contato
+                {{__('Entre em contato')}}
             </a>
         </div>
     </div>
