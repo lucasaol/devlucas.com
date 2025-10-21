@@ -66,7 +66,7 @@
                class="{{request()->routeIs('portfolio.*') ? 'text-primary-700 dark:text-primary-300' : ''}}"
             >
                 <div class="inline-flex items-center space-x-1">
-                    <x-heroicon-s-computer-desktop class="h-4 w-4 mr-2" />  {{__('Portfólio')}}
+                    <x-heroicon-s-computer-desktop class="h-4 w-4 mr-2" />  {{__('Projetos')}}
                 </div>
             </a>
             <a href="{{ route('resume') }}"
@@ -76,8 +76,8 @@
                     <x-heroicon-s-document class="h-4 w-4 mr-2" />  {{__('Currículo')}}
                 </div>
             </a>
-            <a href="{{ route('index') }}"
-               class="{{request()->routeIs('index') ? 'text-primary-700 dark:text-primary-300' : ''}}"
+            <a href="{{ route('contact') }}"
+               class="{{request()->routeIs('contact') ? 'text-primary-700 dark:text-primary-300' : ''}}"
             >
                 <div class="inline-flex items-center space-x-1">
                     <x-heroicon-s-chat-bubble-left-right class="h-4 w-4 mr-2" />  {{__('Contato')}}
