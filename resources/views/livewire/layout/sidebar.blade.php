@@ -55,22 +55,30 @@
         space-y-2 p-4
         [&_a]:block [&_a]:p-2 [&_a]:hover:text-primary-700 [&_a]:dark:hover:text-primary-300"
         >
-            <a href="{{ route('index') }}">
+            <a href="{{ route('index') }}"
+               class="{{request()->routeIs('index') ? 'text-primary-700 dark:text-primary-300' : ''}}"
+            >
                 <div class="inline-flex items-center">
                     <x-heroicon-s-user class="h-4 w-4 mr-2" /> {{__('Sobre mim')}}
                 </div>
             </a>
-            <a href="{{ route('index') }}">
+            <a href="{{ route('portfolio.index') }}"
+               class="{{request()->routeIs('portfolio.*') ? 'text-primary-700 dark:text-primary-300' : ''}}"
+            >
                 <div class="inline-flex items-center space-x-1">
                     <x-heroicon-s-computer-desktop class="h-4 w-4 mr-2" />  {{__('Portfólio')}}
                 </div>
             </a>
-            <a href="{{ route('index') }}">
+            <a href="{{ route('index') }}"
+               class="{{request()->routeIs('index') ? 'text-primary-700 dark:text-primary-300' : ''}}"
+            >
                 <div class="inline-flex items-center space-x-1">
                     <x-heroicon-s-document class="h-4 w-4 mr-2" />  {{__('Currículo')}}
                 </div>
             </a>
-            <a href="{{ route('index') }}">
+            <a href="{{ route('index') }}"
+               class="{{request()->routeIs('index') ? 'text-primary-700 dark:text-primary-300' : ''}}"
+            >
                 <div class="inline-flex items-center space-x-1">
                     <x-heroicon-s-chat-bubble-left-right class="h-4 w-4 mr-2" />  {{__('Contato')}}
                 </div>

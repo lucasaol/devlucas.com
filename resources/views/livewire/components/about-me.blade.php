@@ -10,7 +10,7 @@
         </div>
 
         <div class="mt-4 flex">
-            <a href="{{ route('index') }}" class="text-white bg-primary-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2">
+            <a href="{{ route('portfolio.index') }}" class="text-white bg-primary-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2">
                 <x-heroicon-s-arrow-right-circle class="h-5 w-5 mr-1" />
                 {{__('Ver Portfólio')}}
             </a>

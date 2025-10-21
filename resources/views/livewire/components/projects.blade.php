@@ -29,7 +29,7 @@
     </div>
 
     <div class="m-auto mt-4">
-        <a href="{{ route('index') }}"
+        <a href="{{ route('portfolio.index') }}"
            class="text-white bg-primary-500 hover:bg-primary-700
                focus:ring-4 focus:outline-none focus:ring-primary-300
                font-medium rounded-lg px-5 py-2.5

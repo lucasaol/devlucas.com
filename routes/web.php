@@ -1,10 +1,12 @@
 <?php
 
 use App\Livewire\Pages\HomePage;
+use App\Livewire\Pages\Portfolio;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
 Route::get('/', HomePage::class)->name('index');
+Route::get('/portfolio', Portfolio::class)->name('portfolio.index');
 
 
 Route::get('image/{path}', function ($path) {
