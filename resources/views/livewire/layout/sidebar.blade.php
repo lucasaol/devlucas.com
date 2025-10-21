@@ -69,8 +69,8 @@
                     <x-heroicon-s-computer-desktop class="h-4 w-4 mr-2" />  {{__('Portfólio')}}
                 </div>
             </a>
-            <a href="{{ route('index') }}"
-               class="{{request()->routeIs('index') ? 'text-primary-700 dark:text-primary-300' : ''}}"
+            <a href="{{ route('resume') }}"
+               class="{{request()->routeIs('resume') ? 'text-primary-700 dark:text-primary-300' : ''}}"
             >
                 <div class="inline-flex items-center space-x-1">
                     <x-heroicon-s-document class="h-4 w-4 mr-2" />  {{__('Currículo')}}
