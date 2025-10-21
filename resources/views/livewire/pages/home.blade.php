@@ -7,5 +7,9 @@
         <livewire:components.technologies lazy />
     </section>
 
+    <section class="p-12">
+        <livewire:components.projects lazy :count="4"/>
+    </section>
+
 
 </div>

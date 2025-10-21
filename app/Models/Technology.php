@@ -17,7 +17,7 @@ class Technology extends Model
 
     public static function all($columns = ['*']): Collection
     {
-        return self::query()
+        return static::query()
             ->orderBy('order', 'ASC')
             ->get($columns);
     }

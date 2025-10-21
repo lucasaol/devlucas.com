@@ -1,7 +1,7 @@
 <aside
     @click.away="open=false"
     class="flex flex-col w-full md:w-64 flex-shrink-0
-     text-light-900 h-screen transition-all overflow-auto absolute md:relative"
+     text-light-900 h-screen transition-all overflow-auto absolute md:relative z-0"
     x-data="{ open: false }"
 >
     <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between bg-primary-500 dark:bg-dark-500">
