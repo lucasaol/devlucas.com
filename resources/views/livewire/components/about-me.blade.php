@@ -1,5 +1,5 @@
 <div class="p-12 border-b border-b-gray-300 dark:border-b-gray-700 flex lg:flex-row flex-col h-full container">
-    <div class="flex flex-col justify-between">
+    <div class="flex flex-col w-full justify-between">
         <div>
             <h1 class="text-6xl mb-1 dark:text-light-500">{{$aboutMe->title}}</h1>
             <p class="text-xl mb-3 dark:text-light-700">{{$aboutMe->caption}}</p>
