@@ -27,18 +27,15 @@ jobs:
           npm install
           npm run build
 
-      - name: 🔍 Port Detective (Check 22, 2222, 65002)
-        run: |
-          echo "Testando porta 22..."
-          nc -zv -w5 ${{ secrets.SSH_HOST }} 22 || echo "Porta 22 fechada"
-          echo "Testando porta 2222..."
-          nc -zv -w5 ${{ secrets.SSH_HOST }} 2222 || echo "Porta 2222 fechada"
-          echo "Testando porta 65002..."
-          nc -zv -w5 ${{ secrets.SSH_HOST }} 65002 || echo "Porta 65002 fechada"
-
       - name: 🚀 Deploy via Rsync
         uses: Burnett01/rsync-deployments@7.0.1
         with:
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_port: 65002
+          remote_path: ${{ secrets.REMOTE_PATH }}
+          path: ./
           switches: >-
             -avzr --delete
             --exclude='.git/'
@@ -47,12 +44,7 @@ jobs:
             --exclude='vendor/'
             --exclude='storage/'
             --exclude='.env'
-            -e "ssh -p 65002 -o StrictHostKeyChecking=no"
-          path: ./
-          remote_path: ${{ secrets.REMOTE_PATH }}
-          remote_host: ${{ secrets.SSH_HOST }}
-          remote_user: ${{ secrets.SSH_USER }}
-          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+            -e "ssh -o StrictHostKeyChecking=no"
 
       - name: ⚙️ Post-Deploy (Terminal Commands)
         uses: appleboy/ssh-action@master
