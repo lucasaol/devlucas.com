@@ -1,49 +1,44 @@
-name: Deploy Laravel (cPanel)
+name: Deploy Laravel (SSH/Rsync)
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  deploy-production:
-    name: Deploy to Production
+  deploy:
     runs-on: ubuntu-latest
     environment: production
+
     steps:
       - name: 🚚 Checkout Code
         uses: actions/checkout@v4
+
+      - name: 🚀 Deploy via Rsync
+        uses: Burnett01/rsync-deployments@7.0.1
         with:
-          fetch-depth: 0
-
-      - name: 🐘 Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.4'
-          extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql
-          tools: composer:v2
-
-      - name: 📦 Install Composer Dependencies
-        run: composer install --no-dev --optimize-autoloader
-
-      - name: 🏗️ Install NPM & Build Assets
-        run: |
-          npm install
-          npm run build
-
-      - name: 🚀 Sync Files via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./
+          switches: -avzr --delete
+          path: ./
+          remote_path: /home/devlucas/v2
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
           exclude: |
-            **/.git*
-            **/.github*
-            **/node_modules/**
-            **/tests/**
-            **/storage/logs/**
-            **/storage/app/private/**
+            .git/
+            .github/
+            node_modules/
+            vendor/
+            storage/
             .env
-            phpunit.xml
-            README.md
+
+      - name: ⚙️ Post-Deploy Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/devlucas/v2
+            composer install --no-dev --optimize-autoloader
+            php artisan migrate --force
+            php artisan config:cache
+            php artisan route:cache
