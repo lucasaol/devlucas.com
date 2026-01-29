@@ -46,7 +46,7 @@ jobs:
             --exclude='.env'
             -e "ssh -o StrictHostKeyChecking=no"
 
-      - name: ⚙️ Post-Deploy (Terminal Commands)
+      - name: ⚙️ Post-Deploy Commands
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -55,6 +55,10 @@ jobs:
           port: 65002
           script: |
             cd ${{ secrets.REMOTE_PATH }}
-            composer install --no-dev --optimize-autoloader
+            composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-scripts
+            php artisan config:clear
+            php artisan cache:clear
             php artisan migrate --force
             php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
