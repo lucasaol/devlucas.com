@@ -55,10 +55,23 @@ jobs:
           port: 65002
           script: |
             cd ${{ secrets.REMOTE_PATH }}
+
+            mkdir -p storage/framework/cache/data
+            mkdir -p storage/framework/app/cache
+            mkdir -p storage/framework/sessions
+            mkdir -p storage/framework/views
+            mkdir -p storage/logs
+
+            chmod -R 775 storage bootstrap/cache
+
             composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-scripts
+
+            rm -f bootstrap/cache/config.php
+            rm -f bootstrap/cache/services.php
+            rm -f bootstrap/cache/packages.php
+
             php artisan config:clear
             php artisan cache:clear
             php artisan migrate --force
-            php artisan config:cache
-            php artisan route:cache
-            php artisan view:cache
+
+            php artisan storage:link --force
