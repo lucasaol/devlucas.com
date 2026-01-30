@@ -16,7 +16,10 @@ class ProjectResource extends JsonResource
     {
         return [
             'title' => $this->title,
-            'details' => $this->slug,
+            'urls' =>[
+                'page' => config('app.frontend_url') . '/projects/' . $this->slug,
+                'api' => route('projects.show', ['slug' => $this->slug])
+            ],
             'introduction' => $this->introduction,
             'cover' => $this->whenLoaded('cover', fn() => route('image', ['path' => $this->cover->image]))
         ];
