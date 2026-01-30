@@ -14,9 +14,13 @@ class ProjectInfolist
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->columns(3)
             ->components([
                 TextEntry::make('title'),
-                TextEntry::make('slug'),
+                TextEntry::make('slug')->columnSpan(2),
+                IconEntry::make('is_highlighted')
+                    ->label('Highlight in homepage')
+                    ->boolean(),
                 IconEntry::make('is_published')
                     ->label('Published')
                     ->boolean(),
@@ -28,7 +32,8 @@ class ProjectInfolist
                 TextEntry::make('url')
                     ->placeholder('-'),
                 TextEntry::make('github_url')
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->columnSpan(2),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

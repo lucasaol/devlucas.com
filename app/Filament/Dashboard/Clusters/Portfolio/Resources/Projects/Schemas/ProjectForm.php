@@ -50,6 +50,9 @@ class ProjectForm
                             ->url()
                             ->maxLength(255)
                             ->prefixIcon('fab-github'),
+                        Toggle::make('is_highlighted')
+                            ->label('Highlight in homepage')
+                            ->default(false),
                     ]),
                     Section::make('Content')->schema([
                         Textarea::make('short_description')

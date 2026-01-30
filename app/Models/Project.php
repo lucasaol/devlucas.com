@@ -17,6 +17,7 @@ class Project extends Model
         'short_description',
         'url',
         'github_url',
+        'is_highlighted',
         'is_published',
         'published_at',
         'content',
@@ -42,8 +43,19 @@ class Project extends Model
     {
         return static::query()
             ->where('is_published', true)
+            ->where('is_highlighted', true)
             ->orderBy('order', 'ASC')
             ->limit($count)
+            ->get();
+    }
+
+    public static function published(): Collection
+    {
+        return static::query()
+            ->where('is_published', true)
+            ->orderBy('order', 'ASC')
+            ->orderBy('published_at', 'DESC')
+            ->orderBy('created_at', 'DESC')
             ->get();
     }
 
