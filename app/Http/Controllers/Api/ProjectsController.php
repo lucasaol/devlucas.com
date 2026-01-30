@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\ProjectDetailsResource;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\JsonResponse;
@@ -24,6 +25,17 @@ class ProjectsController
             ProjectResource::collection(
                 Project::highlights(5)
             )
+        );
+    }
+
+    public function show(string $slug): JsonResponse
+    {
+        $project = Project::with(['stack', 'gallery'])
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        return response()->json(
+            new ProjectDetailsResource($project)
         );
     }
 

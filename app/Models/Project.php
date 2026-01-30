@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Project extends Model
 {
@@ -36,12 +37,18 @@ class Project extends Model
 
     public function gallery(): HasMany
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class)->orderBy('order', 'ASC');
+    }
+
+    public function cover(): HasOne
+    {
+        return $this->hasOne(Image::class)->orderBy('order', 'ASC');
     }
 
     public static function highlights(int $count): Collection
     {
         return static::query()
+            ->with(['cover'])
             ->where('is_published', true)
             ->where('is_highlighted', true)
             ->orderBy('order', 'ASC')
@@ -52,6 +59,7 @@ class Project extends Model
     public static function published(): Collection
     {
         return static::query()
+            ->with(['cover'])
             ->where('is_published', true)
             ->orderBy('order', 'ASC')
             ->orderBy('published_at', 'DESC')

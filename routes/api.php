@@ -13,4 +13,5 @@ Route::get('/technologies', [TechnologiesController::class, 'index'])->name('tec
 Route::prefix('projects')->name('projects.')->group(function () {
     Route::get('/', [ProjectsController::class, 'index'])->name('index');
     Route::get('/highlights', [ProjectsController::class, 'highlights'])->name('highlights');
+    Route::get('/{slug}', [ProjectsController::class, 'show'])->name('show');
 });
