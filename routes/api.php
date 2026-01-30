@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ProjectsController;
+use App\Http\Controllers\Api\ResumeController;
 use App\Http\Controllers\Api\SocialMediaController;
 use App\Http\Controllers\Api\AboutMeController;
 use App\Http\Controllers\Api\TechnologiesController;
@@ -15,3 +16,5 @@ Route::prefix('projects')->name('projects.')->group(function () {
     Route::get('/highlights', [ProjectsController::class, 'highlights'])->name('highlights');
     Route::get('/{slug}', [ProjectsController::class, 'show'])->name('show');
 });
+
+Route::get('/resume', [ResumeController::class, 'index'])->name('resume.index');
