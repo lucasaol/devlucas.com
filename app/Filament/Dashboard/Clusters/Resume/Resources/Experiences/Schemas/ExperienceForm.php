@@ -43,7 +43,8 @@ class ExperienceForm
                     ]),
                 Textarea::make('description')
                     ->required()
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->rows(8),
             ]);
     }
 }
