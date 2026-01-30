@@ -6,7 +6,7 @@ use App\Models\Project;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -55,7 +55,7 @@ class ProjectForm
                         Textarea::make('short_description')
                             ->required()
                             ->autosize(),
-                        RichEditor::make('content')
+                        MarkdownEditor::make('content')
                             ->required()
                             ->columnSpanFull()
                     ]),

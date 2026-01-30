@@ -1,11 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\SocialMediaController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AboutMeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
 Route::get('/social-media', [SocialMediaController::class, 'index'])->name('social');
+Route::get('/about-me', [AboutMeController::class, 'index'])->name('about-me');

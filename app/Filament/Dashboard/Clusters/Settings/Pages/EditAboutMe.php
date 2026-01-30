@@ -6,7 +6,7 @@ use App\Filament\Dashboard\Clusters\Settings\SettingsCluster;
 use App\Models\AboutMe;
 use BackedEnum;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -59,7 +59,7 @@ class EditAboutMe extends Page implements HasForms
                 FileUpload::make('picture')
                     ->image()
                     ->directory('about-me'),
-                RichEditor::make('content')
+                MarkdownEditor::make('content')
                     ->required()
                     ->columnSpanFull()
             ])
